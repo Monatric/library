@@ -50,14 +50,17 @@ function BookCard(book) {
   bookReadStatus.classList.add("book-read-status")
   bookReadStatus.textContent = book.readStatus()
 
-  bookSection.appendChild(bookContainer)
-  bookContainer.appendChild(bookTitle)
-  bookContainer.appendChild(bookAuthor)
-  bookContainer.appendChild(bookPages)
-  bookContainer.appendChild(bookReadStatus)
+  appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus)
 
   this.fragment = document.createDocumentFragment()
   this.fragment.appendChild(bookSection)
+}
+
+function appendBookElements(section, container, ...bookDetails) {
+  section.appendChild(container)
+  for (const bookDetail of bookDetails) {
+    container.appendChild(bookDetail)
+  }
 }
 
 function displayBookOnPage() {

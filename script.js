@@ -26,6 +26,10 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
+const jojo = addBookToLibrary("JoJo's Bizarre Adventure", "Hirohiro Araki", 190, true)
+const hxh = addBookToLibrary("Hunter X Hunter", "Yoshihiro Togashi", 148, true)
+const steinsGate = addBookToLibrary("Steins;Gate", "Chiyomaru Shikura", 24, true)
+const onePiece = addBookToLibrary("One Piece", "Eiichiro Oda", 1139, false)
 
 function BookCard(book) {
   const bookSection = document.createElement("section")

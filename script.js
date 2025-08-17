@@ -73,8 +73,7 @@ function appendBookElements(section, container, ...bookDetails) {
 }
 
 // Showing the books on the web view
-function displayBookOnPage() {
-  console.log(myLibrary)
+function displayBooks() {
   myLibrary.forEach((book) => {
     const bookCard = new BookCard(book)
     const libraryContainer = document.querySelector(".library__container")
@@ -82,4 +81,4 @@ function displayBookOnPage() {
   })
 }
 
-displayBookOnPage()
+displayBooks()

@@ -84,24 +84,30 @@ function displayBooks() {
 // Shows the dialog for adding books
 const showDialog = document.querySelector("#showDialog")
 const addBookDialog = document.querySelector("#addBookDialog")
-const confirmBtn = document.querySelector("#submitBtn")
+const submitBtn = document.querySelector("#submitBtn")
+const cancelBtn = document.querySelector("#cancelBtn")
 const bookTitleInput = document.querySelector("#book[title]")
 
 showDialog.addEventListener("click", () => {
   addBookDialog.showModal()
 })
 
+const addBookForm = document.getElementById("addBookForm")
+
+addBookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target)
+  for (let [key, value] of formData.entries()) {
+    console.log(key, value);
+  }
+  addBookDialog.close()
+})
+
 addBookDialog.addEventListener("close", (e) => {
 
 })
 
-confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault()
-  const addBookForm = document.getElementById("addBookForm")
-  const formData = new FormData(addBookForm)
-  for (let [key, value] of formData.entries()) {
-    console.log(key, value);
-  }
+cancelBtn.addEventListener("click", () => {
   addBookDialog.close()
 })
 

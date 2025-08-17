@@ -16,7 +16,7 @@ function Book(title, author, pages, isRead) {
   }
 
   this.readStatus = function () {
-    return this.isRead ? "read already" : "not read yet"
+    return this.isRead ? "Read already" : "Not read yet"
   }
 }
 
@@ -52,7 +52,7 @@ function BookCard(book) {
 
   const bookReadStatus = document.createElement("p")
   bookReadStatus.classList.add("book-read-status")
-  bookReadStatus.textContent = book.readStatus()
+  bookReadStatus.textContent = "Read Status: " + book.readStatus()
 
   appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus)
 

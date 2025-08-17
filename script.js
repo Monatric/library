@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+// Book constructor and prototype methods
 function Book(title, author, pages, isRead) {
   if (!new.target) {
     throw Error("You must use 'new' to call the constructor")
@@ -20,17 +21,20 @@ Book.prototype.readStatus = function () {
   return this.isRead ? "Read already" : "Not read yet"
 }
 
+// Adding books to library
 function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead)
   myLibrary.push(book)
 }
 
+// Initialized books, getting added into the library
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
 const jojo = addBookToLibrary("JoJo's Bizarre Adventure", "Hirohiro Araki", 190, true)
 const hxh = addBookToLibrary("Hunter X Hunter", "Yoshihiro Togashi", 148, true)
 const steinsGate = addBookToLibrary("Steins;Gate", "Chiyomaru Shikura", 24, true)
 const onePiece = addBookToLibrary("One Piece", "Eiichiro Oda", 1139, false)
 
+// HTML constructor for a book card
 function BookCard(book) {
   const bookSection = document.createElement("section")
   bookSection.classList.add("book__card")
@@ -60,6 +64,7 @@ function BookCard(book) {
   this.fragment.appendChild(bookSection)
 }
 
+// Appending HTML elements of a book card
 function appendBookElements(section, container, ...bookDetails) {
   section.appendChild(container)
   for (const bookDetail of bookDetails) {
@@ -67,6 +72,7 @@ function appendBookElements(section, container, ...bookDetails) {
   }
 }
 
+// Showing the books on the web view
 function displayBookOnPage() {
   console.log(myLibrary)
   myLibrary.forEach((book) => {

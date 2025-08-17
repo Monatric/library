@@ -10,9 +10,21 @@
 
 <body>
   <h1>My Library</h1>
+  <button id="showDialog">Add a book</button>
   <main class="library__container">
-
   </main>
+
+  <dialog closedby="any" id="addBookDialog">
+    <form id="addBookForm">
+      <h2>Add a book</h2>
+      <label for="book[title]">Title:</label>
+      <input type="text" id="book[title]">
+      <div>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button value="default" id="submitBtn">Add</button>
+      </div>
+    </form>
+  </dialog>
   <script src="script.js"></script>
 </body>
 

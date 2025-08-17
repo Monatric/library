@@ -26,4 +26,47 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true)
-console.log(myLibrary)
+
+function BookCard(book) {
+  const bookSection = document.createElement("section")
+  bookSection.classList.add("book__card")
+
+  const bookContainer = document.createElement("div")
+  bookContainer.classList.add("book__container")
+
+  const bookTitle = document.createElement("h3")
+  bookTitle.classList.add("book-title")
+  bookTitle.textContent = "Title: " + book.title
+
+  const bookAuthor = document.createElement("p")
+  bookAuthor.classList.add("book-author")
+  bookAuthor.textContent = "Author: " + book.author
+
+  const bookPages = document.createElement("p")
+  bookPages.classList.add("book-pages")
+  bookPages.textContent = "Pages: " + book.pages
+
+  const bookReadStatus = document.createElement("p")
+  bookReadStatus.classList.add("book-read-status")
+  bookReadStatus.textContent = book.readStatus()
+
+  bookSection.appendChild(bookContainer)
+  bookContainer.appendChild(bookTitle)
+  bookContainer.appendChild(bookAuthor)
+  bookContainer.appendChild(bookPages)
+  bookContainer.appendChild(bookReadStatus)
+
+  this.fragment = document.createDocumentFragment()
+  this.fragment.appendChild(bookSection)
+}
+
+function displayBookOnPage() {
+  console.log(myLibrary)
+  myLibrary.forEach((book) => {
+    const bookCard = new BookCard(book)
+    const libraryContainer = document.querySelector(".library__container")
+    libraryContainer.appendChild(bookCard.fragment)
+  })
+}
+
+displayBookOnPage()

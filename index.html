@@ -17,8 +17,28 @@
   <dialog closedby="any" id="addBookDialog">
     <form id="addBookForm">
       <h2>Add a book</h2>
-      <label for="book[title]">Title:</label>
-      <input type="text" id="book[title]" name="book[title]">
+      <div>
+        <label for="book[title]">Title:</label>
+        <input type="text" id="book[title]" name="book[title]">
+      </div>
+
+      <div>
+        <label for="book[author]">Author:</label>
+        <input type="text" id="book[author]" name="book[author]">
+      </div>
+
+      <div>
+        <label for="book[pages]">Pages:</label>
+        <input type="text" id="book[pages]" name="book[pages]">
+      </div>
+
+      <div>
+        <p>Read Status:</p>
+        <label for="book[read_status][yes]">Yes</label>
+        <input type="radio" id="book[read_status][yes]" name="book[read_status]" value="yes">
+        <label for="book[read_status][no]">No</label>
+        <input type="radio" id="book[read_status][no]" name="book[read_status]" value="no">
+      </div>
       <div>
         <button value="cancel" formmethod="dialog" type="button" id="cancelBtn">Cancel</button>
         <button id="submitBtn">Add</button>

@@ -98,15 +98,24 @@ showDialog.addEventListener("click", () => {
 
 addBookForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const formData = new FormData(event.target)
-  const formValues = []
-  for (let [key, value] of formData.entries()) {
-    formValues.push(value)
-  }
-  addBookToLibrary(...formValues)
+  addBooksFromForm(event.target)
   displayBooks()
   addBookDialog.close()
 })
+
+function addBooksFromForm(form) {
+  const formData = new FormData(form)
+  const formValues = []
+  for (let [key, value] of formData.entries()) {
+    if (value == 'yes') {
+      value = true
+    } else if (value == 'no') {
+      value = false
+    }
+    formValues.push(value)
+  }
+  addBookToLibrary(...formValues)
+}
 
 addBookDialog.addEventListener("close", (e) => {
 

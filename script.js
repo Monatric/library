@@ -74,11 +74,14 @@ function appendBookElements(section, container, ...bookDetails) {
 
 // Showing the books on the web view
 function displayBooks() {
-  myLibrary.forEach((book) => {
-    const bookCard = new BookCard(book)
-    const libraryContainer = document.querySelector(".library__container")
+  const libraryContainer = document.querySelector(".library__container")
+  // Start at the last book shown in the view to avoid
+  // going through the entire array for displaying books
+  const start_offset = libraryContainer.childElementCount
+  for (let i = start_offset; i < myLibrary.length; i++) {
+    const bookCard = new BookCard(myLibrary[i])
     libraryContainer.appendChild(bookCard.fragment)
-  })
+  }
 }
 
 // Shows the dialog for adding books
@@ -87,19 +90,21 @@ const addBookDialog = document.querySelector("#addBookDialog")
 const submitBtn = document.querySelector("#submitBtn")
 const cancelBtn = document.querySelector("#cancelBtn")
 const bookTitleInput = document.querySelector("#book[title]")
+const addBookForm = document.getElementById("addBookForm")
 
 showDialog.addEventListener("click", () => {
   addBookDialog.showModal()
 })
 
-const addBookForm = document.getElementById("addBookForm")
-
 addBookForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.target)
+  const formValues = []
   for (let [key, value] of formData.entries()) {
-    console.log(key, value);
+    formValues.push(value)
   }
+  addBookToLibrary(...formValues)
+  displayBooks()
   addBookDialog.close()
 })
 
@@ -111,4 +116,5 @@ cancelBtn.addEventListener("click", () => {
   addBookDialog.close()
 })
 
+// Display books on page load
 displayBooks()

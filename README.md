@@ -14,8 +14,8 @@ This is a simple project for JavaScript, a small library app [guided by The Odin
 
 ### Default view
 
-[Default view](public/default_view.png)
+![Default view](public/default_view.png)
 
 ### Adding a book
 
-[Add book](public/default_view.png)
+![Add book](public/default_view.png)

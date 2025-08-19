@@ -166,7 +166,4 @@ cancelBtn.addEventListener("click", () => {
 // Display books on page load
 window.onload = function () {
   displayBooks()
-
-  // const bookRemoveBtn = document.querySelectorAll(".removeBtn")
-  // console.log(bookRemoveBtn)
 }

@@ -36,6 +36,13 @@ const onePiece = addBookToLibrary("One Piece", "Eiichiro Oda", 1139, false)
 
 // HTML constructor for a book card
 function BookCard(book) {
+  const bookSection = createBookElements(book)
+
+  this.fragment = document.createDocumentFragment()
+  this.fragment.appendChild(bookSection)
+}
+
+function createBookElements(book) {
   const bookSection = document.createElement("section")
   bookSection.classList.add("book__card")
   bookSection.dataset.id = book.id
@@ -72,8 +79,7 @@ function BookCard(book) {
 
   appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus, bookDeleteBtn)
 
-  this.fragment = document.createDocumentFragment()
-  this.fragment.appendChild(bookSection)
+  return bookSection
 }
 
 // Appending HTML elements of a book card

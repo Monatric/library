@@ -38,6 +38,7 @@ const onePiece = addBookToLibrary("One Piece", "Eiichiro Oda", 1139, false)
 function BookCard(book) {
   const bookSection = document.createElement("section")
   bookSection.classList.add("book__card")
+  bookSection.dataset.id = book.id
 
   const bookContainer = document.createElement("div")
   bookContainer.classList.add("book__container")
@@ -58,7 +59,18 @@ function BookCard(book) {
   bookReadStatus.classList.add("book-read-status")
   bookReadStatus.textContent = "Read Status: " + book.readStatus()
 
-  appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus)
+  const bookDeleteBtn = document.createElement("button")
+  bookDeleteBtn.classList.add("removeBtn")
+  bookDeleteBtn.textContent = "Remove Book"
+  bookDeleteBtn.dataset.id = book.id
+  bookDeleteBtn.addEventListener("click", (e) => {
+    const bookToBeDeleted = myLibrary.find((book) => book.id == e.target.dataset.id)
+    const index = myLibrary.indexOf(bookToBeDeleted)
+    myLibrary.splice(index, 1)
+    bookSection.remove()
+  })
+
+  appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus, bookDeleteBtn)
 
   this.fragment = document.createDocumentFragment()
   this.fragment.appendChild(bookSection)
@@ -125,5 +137,12 @@ cancelBtn.addEventListener("click", () => {
   addBookDialog.close()
 })
 
+
+
 // Display books on page load
-displayBooks()
+window.onload = function () {
+  displayBooks()
+
+  // const bookRemoveBtn = document.querySelectorAll(".removeBtn")
+  // console.log(bookRemoveBtn)
+}

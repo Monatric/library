@@ -21,6 +21,10 @@ Book.prototype.readStatus = function () {
   return this.isRead ? "Read already" : "Not read yet"
 }
 
+Book.prototype.changeReadStatus = function () {
+  this.isRead ? this.isRead = false : this.isRead = true
+}
+
 // Adding books to library
 function addBookToLibrary(title, author, pages, isRead) {
   const book = new Book(title, author, pages, isRead)
@@ -68,7 +72,7 @@ function createBookElements(book) {
   bookReadStatusCheckbox.type = "checkbox"
   book.isRead ? bookReadStatusCheckbox.checked = true : bookReadStatusCheckbox.checked = false
   bookReadStatusCheckbox.addEventListener("click", (e) => {
-    e.target.checked ? book.isRead = true : book.isRead = false
+    book.changeReadStatus()
     bookReadStatusLabel.textContent = "Read Status: " + book.readStatus()
   })
 

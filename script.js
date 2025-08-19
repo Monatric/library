@@ -62,9 +62,18 @@ function createBookElements(book) {
   bookPages.classList.add("book-pages")
   bookPages.textContent = "Pages: " + book.pages
 
-  const bookReadStatus = document.createElement("p")
-  bookReadStatus.classList.add("book-read-status")
-  bookReadStatus.textContent = "Read Status: " + book.readStatus()
+  const bookReadStatusCheckbox = document.createElement("input")
+  bookReadStatusCheckbox.classList.add("book-read-status")
+  bookReadStatusCheckbox.name = "book-read-status"
+  bookReadStatusCheckbox.type = "checkbox"
+  book.isRead ? bookReadStatusCheckbox.checked = true : bookReadStatusCheckbox.checked = false
+  bookReadStatusCheckbox.addEventListener("click", (e) => {
+    e.target.checked ? book.isRead = true : book.isRead = false
+    bookReadStatusLabel.textContent = "Read Status: " + book.readStatus()
+  })
+
+  const bookReadStatusLabel = document.createElement("label")
+  bookReadStatusLabel.textContent = "Read Status: " + book.readStatus()
 
   const bookDeleteBtn = document.createElement("button")
   bookDeleteBtn.classList.add("removeBtn")
@@ -77,7 +86,16 @@ function createBookElements(book) {
     bookSection.remove()
   })
 
-  appendBookElements(bookSection, bookContainer, bookTitle, bookAuthor, bookPages, bookReadStatus, bookDeleteBtn)
+  bookElements = [bookSection,
+    bookContainer,
+    bookTitle,
+    bookAuthor,
+    bookPages,
+    bookReadStatusCheckbox,
+    bookReadStatusLabel,
+    bookDeleteBtn
+  ]
+  appendBookElements(...bookElements)
 
   return bookSection
 }

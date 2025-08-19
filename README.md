@@ -4,8 +4,18 @@ This is a simple project for JavaScript, a small library app [guided by The Odin
 
 ## Learning Outcomes
 
-Coming soon...
+- Used JS constructors to build objects
+- Used prototypes to build functions for Book
+- Used `<dialog>` to build a form for adding books
+- Used `data-attribute` as a way to delete books
+- Displayed and removed books in a card dynamically using JS `fragments` and creating elements, acting like a component
 
 ## Screenshots
 
-Coming soon...
+### Default view
+
+[Default view](public/default_view.png)
+
+### Adding a book
+
+[Add book](public/default_view.png)
